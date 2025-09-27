@@ -8,7 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.CustomerManagementDetails;
-import service.CustomerManagementControllerImpl;
+import service.CustomerManagementServiceImpl;
 import service.CustomerManagementService;
 
 import java.net.URL;
@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class CustomerManagementFormController implements Initializable {
     ObservableList<CustomerManagementDetails> customerManagementDetails=FXCollections.observableArrayList();
-    CustomerManagementService customerManagementService=new CustomerManagementControllerImpl();
+    CustomerManagementService customerManagementService=new CustomerManagementServiceImpl();
 
     @FXML
     private Button ADD;

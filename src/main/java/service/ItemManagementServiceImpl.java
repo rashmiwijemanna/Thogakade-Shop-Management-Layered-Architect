@@ -1,17 +1,15 @@
 package service;
 
-import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.ItemManagementDetails;
 import repository.ItemRepository;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ItemManagementControllerImpl implements ItemManagementService {
+public class ItemManagementServiceImpl implements ItemManagementService {
     ItemRepository itemRepository= new ItemRepository();
     @Override
     public ObservableList<ItemManagementDetails> getAllItemDetails() {

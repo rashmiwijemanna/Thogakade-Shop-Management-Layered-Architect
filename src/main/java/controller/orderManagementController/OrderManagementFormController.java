@@ -8,7 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.OrderManagementDetails;
-import service.OrderManagementControllerImpl;
+import service.OrderManagementServiceImpl;
 import service.OrderManagementService;
 
 import java.net.URL;
@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class OrderManagementFormController implements Initializable {
     ObservableList<OrderManagementDetails>orderManagementDetails= FXCollections.observableArrayList();
-    OrderManagementService orderManagementService=new OrderManagementControllerImpl();
+    OrderManagementService orderManagementService=new OrderManagementServiceImpl();
 
     @FXML
     private Button ADD;

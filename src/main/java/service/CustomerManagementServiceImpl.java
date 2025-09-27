@@ -1,6 +1,5 @@
 package service;
 
-import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.CustomerManagementDetails;
@@ -11,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CustomerManagementControllerImpl implements CustomerManagementService {
+public class CustomerManagementServiceImpl implements CustomerManagementService {
     CustomerRepository customerRepository = new CustomerRepository();
 
     @Override

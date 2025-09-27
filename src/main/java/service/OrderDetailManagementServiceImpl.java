@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class OrderDetailManagementControllerImpl implements OrderDetailManagementService {
+public class OrderDetailManagementServiceImpl implements OrderDetailManagementService {
     OrderDetailRepository  orderDetailRepository= new OrderDetailRepository();
     @Override
     public ObservableList<OrderDetailManagementDetails> getAllOrderDetails() {

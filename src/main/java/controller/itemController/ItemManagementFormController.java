@@ -8,7 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.ItemManagementDetails;
-import service.ItemManagementControllerImpl;
+import service.ItemManagementServiceImpl;
 import service.ItemManagementService;
 
 import java.net.URL;
@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class ItemManagementFormController implements Initializable {
     ObservableList<ItemManagementDetails>itemManagementDetails= FXCollections.observableArrayList();
-    ItemManagementService itemManagementService=new ItemManagementControllerImpl();
+    ItemManagementService itemManagementService=new ItemManagementServiceImpl();
 
     @FXML
     private Button ADD;
