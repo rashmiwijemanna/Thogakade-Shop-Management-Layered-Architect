@@ -27,16 +27,7 @@ public class CustomerManagementServiceImpl implements CustomerManagementService 
 
     @Override
     public void deleteCustomerDetails(String id) {
-        PreparedStatement preparedStatement = customerRepository.deleteCustomerDetails();
-        Connection connection=null;
-        try {
-            preparedStatement.setObject(1,id);
-            preparedStatement.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
+        customerRepository.deleteCustomerDetails(id);
 
     }
 

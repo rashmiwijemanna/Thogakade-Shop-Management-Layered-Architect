@@ -43,12 +43,14 @@ public class CustomerRepository {
 
     }
 
-    public PreparedStatement deleteCustomerDetails(){
+    public void deleteCustomerDetails(String id){
         Connection connection = null;
         try {
             connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Customer WHERE CustId = ?");
-            return  preparedStatement;
+            preparedStatement.setObject(1,id);
+            preparedStatement.executeUpdate();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
