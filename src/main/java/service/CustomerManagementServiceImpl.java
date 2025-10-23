@@ -16,10 +16,11 @@ public class CustomerManagementServiceImpl implements CustomerManagementService 
     @Override
     public void addCustomerDetails(CustomerManagementDetails customerManagementDetails) {
 
-       customerRepository.addCustomerDetails();
-
-
-
+        try {
+            customerRepository.addCustomerDetails(customerManagementDetails);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
