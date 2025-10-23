@@ -1,6 +1,7 @@
 package repository;
 
 import db.DBConnection;
+import model.CustomerManagementDetails;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,16 +22,24 @@ public class CustomerRepository {
 
     }
 
-    public  PreparedStatement addCustomerDetails(){
+    public  void addCustomerDetails(CustomerManagementDetails customerManagementDetails) throws SQLException {
         String SQL="INSERT INTO Customer(CustID, CustTitle, CustName, DOB, salary, CustAddress, City, Province, PostalCode) VALUES(?,?,?,?,?,?,?,?,?);";
-        Connection connection= null;
-        try {
-            connection = DBConnection.getInstance().getConnection();
+
+            Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            return preparedStatement;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            preparedStatement.setObject(1,customerManagementDetails.getId());
+            preparedStatement.setObject(2,customerManagementDetails.getTitle());
+            preparedStatement.setObject(3,customerManagementDetails.getName());
+            preparedStatement.setObject(4,customerManagementDetails.getDOB());
+            preparedStatement.setObject(5,customerManagementDetails.getSalary());
+            preparedStatement.setObject(6,customerManagementDetails.getAddress());
+            preparedStatement.setObject(7,customerManagementDetails.getCity());
+            preparedStatement.setObject(8,customerManagementDetails.getProvince());
+            preparedStatement.setObject(9,customerManagementDetails.getPostalcode());
+
+            preparedStatement.executeUpdate();
+
+
 
     }
 

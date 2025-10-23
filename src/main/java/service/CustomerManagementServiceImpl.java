@@ -16,27 +16,11 @@ public class CustomerManagementServiceImpl implements CustomerManagementService 
     @Override
     public void addCustomerDetails(CustomerManagementDetails customerManagementDetails) {
 
-        PreparedStatement preparedStatement = customerRepository.addCustomerDetails();
+       customerRepository.addCustomerDetails();
 
 
 
-        try {
 
-            preparedStatement.setObject(1,customerManagementDetails.getId());
-            preparedStatement.setObject(2,customerManagementDetails.getTitle());
-            preparedStatement.setObject(3,customerManagementDetails.getName());
-            preparedStatement.setObject(4,customerManagementDetails.getDOB());
-            preparedStatement.setObject(5,customerManagementDetails.getSalary());
-            preparedStatement.setObject(6,customerManagementDetails.getAddress());
-            preparedStatement.setObject(7,customerManagementDetails.getCity());
-            preparedStatement.setObject(8,customerManagementDetails.getProvince());
-            preparedStatement.setObject(9,customerManagementDetails.getPostalcode());
-
-            preparedStatement.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
 
     }
 
