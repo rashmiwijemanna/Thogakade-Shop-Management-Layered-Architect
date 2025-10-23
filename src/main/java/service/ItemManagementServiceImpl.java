@@ -43,15 +43,7 @@ public class ItemManagementServiceImpl implements ItemManagementService {
 
     @Override
     public void deleteItemDetails(String code) {
-        PreparedStatement preparedStatement = itemRepository.deleteItemDetails();
-        try {
-
-            preparedStatement.setObject(1,code);
-            preparedStatement.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        itemRepository.deleteItemDetails(code);
 
     }
 

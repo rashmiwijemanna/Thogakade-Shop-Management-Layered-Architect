@@ -41,13 +41,15 @@ public class ItemRepositoryImpl implements ItemRepository {
         }
     }
 
-    public PreparedStatement deleteItemDetails(){
+    @Override
+    public void deleteItemDetails(String code){
         String SQL="DELETE FROM Itemm WHERE ItemCode = ?";
         Connection connection = null;
         try {
             connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            return preparedStatement;
+            preparedStatement.setObject(1,code);
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
