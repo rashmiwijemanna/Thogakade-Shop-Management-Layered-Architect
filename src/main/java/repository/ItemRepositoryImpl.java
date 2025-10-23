@@ -56,13 +56,19 @@ public class ItemRepositoryImpl implements ItemRepository {
 
     }
 
-    public  PreparedStatement updateItemDetails(){
+    @Override
+    public  void  updateItemDetails(ItemManagementDetails itemManagementDetails){
         String SQL="UPDATE Itemm SET Description = ?, PackSize = ?, UnitPrice = ?, QtyOnHand = ? WHERE ItemCode = ?";
         Connection connection= null;
         try {
             connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            return  preparedStatement;
+            preparedStatement.setObject(1,itemManagementDetails.getDescription());
+            preparedStatement.setObject(2,itemManagementDetails.getPackSize());
+            preparedStatement.setObject(3,itemManagementDetails.getUnitPrice());
+            preparedStatement.setObject(4,itemManagementDetails.getQty());
+            preparedStatement.setObject(5,itemManagementDetails.getCode());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

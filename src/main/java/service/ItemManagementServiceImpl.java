@@ -49,17 +49,8 @@ public class ItemManagementServiceImpl implements ItemManagementService {
 
     @Override
     public void updateItemDetails(ItemManagementDetails itemManagementDetails) {
-        PreparedStatement preparedStatement = itemRepository.updateItemDetails();
+      itemRepository.updateItemDetails(itemManagementDetails);
 
-        try {
-            preparedStatement.setObject(1,itemManagementDetails.getDescription());
-            preparedStatement.setObject(2,itemManagementDetails.getPackSize());
-            preparedStatement.setObject(3,itemManagementDetails.getUnitPrice());
-            preparedStatement.setObject(4,itemManagementDetails.getQty());
-            preparedStatement.setObject(5,itemManagementDetails.getCode());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 }
