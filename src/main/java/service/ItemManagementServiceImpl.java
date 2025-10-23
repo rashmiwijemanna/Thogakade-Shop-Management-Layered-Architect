@@ -4,13 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.ItemManagementDetails;
 import repository.ItemRepository;
+import repository.ItemRepositoryImpl;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ItemManagementServiceImpl implements ItemManagementService {
-    ItemRepository itemRepository= new ItemRepository();
+   ItemRepository itemRepository=new ItemRepositoryImpl();
     @Override
     public ObservableList<ItemManagementDetails> getAllItemDetails() {
         ObservableList<ItemManagementDetails> itemManagementDetails= FXCollections.observableArrayList();
@@ -37,20 +38,7 @@ public class ItemManagementServiceImpl implements ItemManagementService {
 
     @Override
     public void addItemDetails(ItemManagementDetails itemManagementDetails) {
-        PreparedStatement preparedStatement = itemRepository.addItemDetails();
-
-
-        try {
-            preparedStatement.setObject(1,itemManagementDetails.getCode());
-            preparedStatement.setObject(2,itemManagementDetails.getDescription());
-            preparedStatement.setObject(3,itemManagementDetails.getPackSize());
-            preparedStatement.setObject(4,itemManagementDetails.getUnitPrice());
-            preparedStatement.setObject(5,itemManagementDetails.getQty());
-            preparedStatement.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        itemRepository.addItemDetails(itemManagementDetails);
     }
 
     @Override
