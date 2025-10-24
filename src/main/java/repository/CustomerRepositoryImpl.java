@@ -8,7 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CustomerRepositoryImpl {
+public class CustomerRepositoryImpl implements CustomerRepository {
+    @Override
     public ResultSet getAllCustomer(){
         Connection connection= null;
         try {
@@ -22,6 +23,7 @@ public class CustomerRepositoryImpl {
 
     }
 
+    @Override
     public  void addCustomerDetails(CustomerManagementDetails customerManagementDetails) throws SQLException {
         String SQL="INSERT INTO Customer(CustID, CustTitle, CustName, DOB, salary, CustAddress, City, Province, PostalCode) VALUES(?,?,?,?,?,?,?,?,?);";
 
@@ -43,6 +45,7 @@ public class CustomerRepositoryImpl {
 
     }
 
+    @Override
     public void deleteCustomerDetails(String id){
         Connection connection = null;
         try {
@@ -57,6 +60,7 @@ public class CustomerRepositoryImpl {
 
     }
 
+    @Override
     public  void updateCustomerDetails(CustomerManagementDetails customerManagementDetails){
         String SQL="UPDATE Customer SET CustTitle = ?, CustName = ?, DOB = ?, salary = ?, CustAddress = ?, City = ?, Province = ?, PostalCode = ? WHERE CustID = ?";
         Connection connection= null;
