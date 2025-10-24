@@ -57,13 +57,23 @@ public class CustomerRepository {
 
     }
 
-    public  PreparedStatement updateCustomerDetails(){
+    public  void updateCustomerDetails(CustomerManagementDetails customerManagementDetails){
         String SQL="UPDATE Customer SET CustTitle = ?, CustName = ?, DOB = ?, salary = ?, CustAddress = ?, City = ?, Province = ?, PostalCode = ? WHERE CustID = ?";
         Connection connection= null;
         try {
             connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            return preparedStatement;
+            preparedStatement.setObject(1,customerManagementDetails.getTitle());
+            preparedStatement.setObject(2,customerManagementDetails.getName());
+            preparedStatement.setObject(3,customerManagementDetails.getDOB());
+            preparedStatement.setObject(4,customerManagementDetails.getSalary());
+            preparedStatement.setObject(5,customerManagementDetails.getAddress());
+            preparedStatement.setObject(6,customerManagementDetails.getCity());
+            preparedStatement.setObject(7,customerManagementDetails.getProvince());
+            preparedStatement.setObject(8,customerManagementDetails.getPostalcode());
+            preparedStatement.setObject(9,customerManagementDetails.getId());
+            preparedStatement.executeUpdate();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
