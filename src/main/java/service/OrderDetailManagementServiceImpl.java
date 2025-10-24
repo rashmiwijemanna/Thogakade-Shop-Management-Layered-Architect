@@ -1,18 +1,15 @@
 package service;
 
-import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.OrderDetailManagementDetails;
-import repository.OrderDetailRepository;
+import repository.OrderDetailRepositoryImpl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class OrderDetailManagementServiceImpl implements OrderDetailManagementService {
-    OrderDetailRepository  orderDetailRepository= new OrderDetailRepository();
+    OrderDetailRepositoryImpl orderDetailRepository= new OrderDetailRepositoryImpl();
     @Override
     public ObservableList<OrderDetailManagementDetails> getAllOrderDetails() {
         ObservableList<OrderDetailManagementDetails>orderDetailManagementDetails= FXCollections.observableArrayList();

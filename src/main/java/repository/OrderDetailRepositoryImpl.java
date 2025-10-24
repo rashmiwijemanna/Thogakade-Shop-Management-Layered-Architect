@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class OrderDetailRepository {
+public class OrderDetailRepositoryImpl {
     public ResultSet getAllOrderDetails(){
         Connection connection= null;
         try {
