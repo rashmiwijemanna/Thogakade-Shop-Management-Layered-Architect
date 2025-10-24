@@ -52,4 +52,21 @@ public class OrderDetailRepository {
         }
 
     }
+    public void updateOrderDetails(OrderDetailManagementDetails orderDetailManagementDetails){
+        String SQL="UPDATE OrderDetail SET OrderQTY = ?, Discount = ? WHERE OrderId = ? AND ItemCode = ?";
+
+        Connection connection= null;
+        try {
+            connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setObject(1,orderDetailManagementDetails.getQty());
+            preparedStatement.setObject(2,orderDetailManagementDetails.getDiscount());
+            preparedStatement.setObject(3,orderDetailManagementDetails.getId());
+            preparedStatement.setObject(4,orderDetailManagementDetails.getItemCode());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
