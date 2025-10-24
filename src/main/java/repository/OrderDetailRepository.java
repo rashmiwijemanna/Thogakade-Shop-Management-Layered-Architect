@@ -38,4 +38,18 @@ public class OrderDetailRepository {
         }
 
     }
+
+    public void deleteOrderDetails(String id){
+        String SQL="DELETE FROM OrderDetail WHERE OrderId = ?";
+        Connection connection= null;
+        try {
+            connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setObject(1,id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
