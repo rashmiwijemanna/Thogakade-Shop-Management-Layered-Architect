@@ -3,15 +3,13 @@ package service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.CustomerManagementDetails;
-import repository.CustomerRepository;
+import repository.CustomerRepositoryImpl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CustomerManagementServiceImpl implements CustomerManagementService {
-    CustomerRepository customerRepository = new CustomerRepository();
+    CustomerRepositoryImpl customerRepository = new CustomerRepositoryImpl();
 
     @Override
     public void addCustomerDetails(CustomerManagementDetails customerManagementDetails) {
@@ -21,8 +19,6 @@ public class CustomerManagementServiceImpl implements CustomerManagementService 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     @Override
