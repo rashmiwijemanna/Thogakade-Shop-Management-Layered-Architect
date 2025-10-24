@@ -1,6 +1,7 @@
 package repository;
 
 import db.DBConnection;
+import model.OrderDetailManagementDetails;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +16,23 @@ public class OrderDetailRepository {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM OrderDetail;");
             ResultSet resultSet = preparedStatement.executeQuery();
             return resultSet;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void addOrderDetail(OrderDetailManagementDetails orderDetailManagementDetails){
+        String SQL="INSERT INTO OrderDetail (OrderId, ItemCode, OrderQTY, Discount) VALUES(?,?,?,?)";
+        Connection connection= null;
+        try {
+            connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setObject(1,orderDetailManagementDetails.getId());
+            preparedStatement.setObject(2,orderDetailManagementDetails.getItemCode());
+            preparedStatement.setObject(3,orderDetailManagementDetails.getQty());
+            preparedStatement.setObject(4,orderDetailManagementDetails.getDiscount());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

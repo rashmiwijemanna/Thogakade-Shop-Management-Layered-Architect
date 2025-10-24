@@ -34,18 +34,8 @@ public class OrderDetailManagementServiceImpl implements OrderDetailManagementSe
 
     @Override
     public void addOrderDetail(OrderDetailManagementDetails orderDetailManagementDetails) {
-        String SQL="INSERT INTO OrderDetail (OrderId, ItemCode, OrderQTY, Discount) VALUES(?,?,?,?)";
-        try {
-            Connection connection=DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setObject(1,orderDetailManagementDetails.getId());
-            preparedStatement.setObject(2,orderDetailManagementDetails.getItemCode());
-            preparedStatement.setObject(3,orderDetailManagementDetails.getQty());
-            preparedStatement.setObject(4,orderDetailManagementDetails.getDiscount());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
+        orderDetailRepository.addOrderDetail(orderDetailManagementDetails);
     }
 
     @Override
