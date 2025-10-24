@@ -42,16 +42,7 @@ public class OrderManagementServiceImpl implements OrderManagementService {
 
     @Override
     public void deleteOrderDetails(String id) {
-        String SQL="DELETE FROM Orders2 WHERE OrderId = ?";
-        try {
-            Connection connection=DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setObject(1,id);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
+        orderManagementRepository.deleteOrderDetails(id);
     }
 
     @Override
