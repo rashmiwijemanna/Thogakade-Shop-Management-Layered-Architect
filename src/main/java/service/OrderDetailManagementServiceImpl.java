@@ -36,7 +36,7 @@ public class OrderDetailManagementServiceImpl implements OrderDetailManagementSe
     }
 
     @Override
-    public void deleteOrderDetails(String id) throws SQLException {
+    public void deleteOrderDetails(String id)  {
 
         orderDetailRepository.deleteOrderDetails(id);
 

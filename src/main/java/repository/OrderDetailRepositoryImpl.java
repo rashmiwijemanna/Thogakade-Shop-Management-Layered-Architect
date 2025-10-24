@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class OrderDetailRepositoryImpl implements OrderRepository {
+    @Override
     public ResultSet getAllOrderDetails(){
         Connection connection= null;
         try {
@@ -22,6 +23,7 @@ public class OrderDetailRepositoryImpl implements OrderRepository {
 
     }
 
+    @Override
     public void addOrderDetail(OrderDetailManagementDetails orderDetailManagementDetails){
         String SQL="INSERT INTO OrderDetail (OrderId, ItemCode, OrderQTY, Discount) VALUES(?,?,?,?)";
         Connection connection= null;
@@ -39,6 +41,7 @@ public class OrderDetailRepositoryImpl implements OrderRepository {
 
     }
 
+    @Override
     public void deleteOrderDetails(String id){
         String SQL="DELETE FROM OrderDetail WHERE OrderId = ?";
         Connection connection= null;
@@ -52,6 +55,7 @@ public class OrderDetailRepositoryImpl implements OrderRepository {
         }
 
     }
+    @Override
     public void updateOrderDetails(OrderDetailManagementDetails orderDetailManagementDetails){
         String SQL="UPDATE OrderDetail SET OrderQTY = ?, Discount = ? WHERE OrderId = ? AND ItemCode = ?";
 

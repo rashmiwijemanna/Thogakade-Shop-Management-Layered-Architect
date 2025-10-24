@@ -8,6 +8,6 @@ import java.sql.SQLException;
 public interface OrderDetailManagementService {
     ObservableList<OrderDetailManagementDetails>getAllOrderDetails();
     void addOrderDetail(OrderDetailManagementDetails orderDetailManagementDetails);
-    void deleteOrderDetails(String id) throws SQLException;
+    void deleteOrderDetails(String id);
     void updateOrderDetails(OrderDetailManagementDetails orderDetailManagementDetails);
 }
